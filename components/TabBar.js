@@ -71,7 +71,7 @@ var TabBar = React.createClass({
     });
 
     return (
-      <View>
+      <View style={{backgroundColor: '#fff'}}>
         <View style={[styles.tabs, this.props.style, ]}>
           {this.props.tabs.map((tab, i) => this.renderTabOption(tab, i))}
         </View>
@@ -92,11 +92,8 @@ var styles = StyleSheet.create({
     height: 45,
     flexDirection: 'row',
     paddingTop: 5,
-    borderWidth: 1,
-    borderTopWidth: 0,
-    borderLeftWidth: 0,
-    borderRightWidth: 0,
-    borderBottomColor: 'rgba(0,0,0,0.05)',
+    borderBottomWidth: 2,
+    borderBottomColor: 'rgba(0,0,0,0.1)',
   },
   icon: {
     position: 'absolute',
