@@ -24,6 +24,7 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		13C3EC01C4A94D1CB47A5F10 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C247B8982163403193F0BE4C /* Zocial.ttf */; };
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
+		30E128B81CA6FF780023E444 /* shopping-list-icons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 30E128B71CA6FF780023E444 /* shopping-list-icons.ttf */; };
 		50BE8E54A543440E9F1E2360 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 61B3ECBD42E94ED0A999764E /* FontAwesome.ttf */; };
 		50EC47D346D24534A7AF7217 /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E169566274534822B045C608 /* EvilIcons.ttf */; };
 		51AA555DD4C04017A0013A5F /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 903AB621C2514B18A7BE5A8C /* Foundation.ttf */; };
@@ -141,6 +142,7 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ShoppingList/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = ShoppingList/main.m; sourceTree = "<group>"; };
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
+		30E128B71CA6FF780023E444 /* shopping-list-icons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "shopping-list-icons.ttf"; path = "../assets/fonts/ShoppingListIcons/font/shopping-list-icons.ttf"; sourceTree = "<group>"; };
 		61B3ECBD42E94ED0A999764E /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
 		62FC89873F004C03A23EA395 /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
@@ -345,6 +347,7 @@
 		B42ECA33F13D4E2F949A6EF7 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				30E128B71CA6FF780023E444 /* shopping-list-icons.ttf */,
 				62FC89873F004C03A23EA395 /* Entypo.ttf */,
 				E169566274534822B045C608 /* EvilIcons.ttf */,
 				61B3ECBD42E94ED0A999764E /* FontAwesome.ttf */,
@@ -568,6 +571,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30E128B81CA6FF780023E444 /* shopping-list-icons.ttf in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 				02EB932F0B54402E9D8DF4D1 /* Entypo.ttf in Resources */,

@@ -6,7 +6,9 @@ import React, {
   Animated
 } from 'react-native';
 
-import Icon from 'react-native-vector-icons/Ionicons';
+var { createIconSetFromFontello } = require('react-native-vector-icons');
+var fontelloConfig = require('./../assets/fonts/ShoppingListIcons/config.json');
+var Icon = createIconSetFromFontello(fontelloConfig);
 
 var TabBar = React.createClass({
   selectedTabIcons: [],
@@ -23,9 +25,9 @@ var TabBar = React.createClass({
 
     return (
       <TouchableOpacity key={name} onPress={() => this.props.goToPage(page)} style={styles.tab}>
-        <Icon name={name} size={30} color='#ff5f2e' style={styles.icon}
+        <Icon name={name} size={30} color='rgba(0,0,0,1)' style={styles.icon}
               ref={(icon) => { this.selectedTabIcons[page] = icon }}/>
-        <Icon name={name} size={30} color='#F68657' style={styles.icon}
+        <Icon name={name} size={30} color='rgba(0,0,0,0.5)' style={styles.icon}
               ref={(icon) => { this.unselectedTabIcons[page] = icon }}/>
       </TouchableOpacity>
     );
@@ -62,7 +64,7 @@ var TabBar = React.createClass({
       position: 'absolute',
       width: containerWidth / numberOfTabs,
       height: 2,
-      backgroundColor: '#ff5f2e',
+      backgroundColor: 'rgba(0,0,0,1)',
       bottom: 0,
     };
 
