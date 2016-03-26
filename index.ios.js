@@ -5,7 +5,8 @@ import React, {
   Component,
   StyleSheet,
   Text,
-  View
+  View,
+  StatusBar
 } from 'react-native';
 
 import ScrollableTabView from 'react-native-scrollable-tab-view';
@@ -20,17 +21,20 @@ class ShoppingList extends Component {
   }
   render() {
     return (
-      <ScrollableTabView style={styles.container} initialPage={1} renderTabBar={() => <TabBar/>} locked={!this.state.swipingInProgress}>
-        <View tabLabel="settings" style={styles.tabHeader}>
-          <Text>Hello</Text>
-        </View>
-        <View tabLabel="images" style={[styles.tabHeader, styles.tabHome]}>
-          <Text>Bolo</Text>
-        </View>
-        <View tabLabel="chatboxes" style={styles.tabHeader}>
-          <Text>Kuch</Text>
-        </View>
-      </ScrollableTabView>
+      <View style={{flex: 1}}>
+        <StatusBar hidden={true} />
+        <ScrollableTabView style={styles.container} initialPage={1} renderTabBar={() => <TabBar/>} locked={!this.state.swipingInProgress}>
+          <View tabLabel="shopsettings" style={styles.tabHeader}>
+            <Text>Hello</Text>
+          </View>
+          <View tabLabel="shoppinglist" style={[styles.tabHeader, styles.tabHome]}>
+            <Text>Bolo</Text>
+          </View>
+          <View tabLabel="thelist" style={styles.tabHeader}>
+            <Text>Kuch</Text>
+          </View>
+        </ScrollableTabView>
+      </View>
     );
   }
 }
@@ -39,8 +43,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    backgroundColor: '#e1eef6',
-    marginTop: 20
+    backgroundColor: '#f5f5f5',
+    marginTop: 0
   },
   tabHeader: {
     flex: 1
