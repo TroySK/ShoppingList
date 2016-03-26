@@ -1,7 +1,4 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- */
+'use strict';
 
 import React, {
   AppRegistry,
@@ -11,21 +8,29 @@ import React, {
   View
 } from 'react-native';
 
+import ScrollableTabView from 'react-native-scrollable-tab-view';
+import TabBar from './components/TabBar.js';
+
 class ShoppingList extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      swipingInProgress: false,
+    };
+  }
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
-      </View>
+      <ScrollableTabView style={styles.container} initialPage={1} renderTabBar={() => <TabBar/>} locked={!this.state.swipingInProgress}>
+        <View tabLabel="settings" style={styles.tabHeader}>
+          <Text>Hello</Text>
+        </View>
+        <View tabLabel="images" style={[styles.tabHeader, styles.tabHome]}>
+          <Text>Bolo</Text>
+        </View>
+        <View tabLabel="chatboxes" style={styles.tabHeader}>
+          <Text>Kuch</Text>
+        </View>
+      </ScrollableTabView>
     );
   }
 }
@@ -34,19 +39,18 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#e1eef6',
+    marginTop: 20
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
+  tabHeader: {
+    flex: 1
   },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
+  tabHome: {
+
   },
+  swiper: {
+    flex: 1,
+  }
 });
 
 AppRegistry.registerComponent('ShoppingList', () => ShoppingList);
