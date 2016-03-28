@@ -5,7 +5,6 @@ import React, {
   Component,
   Dimensions,
   Image,
-  ListView,
   PixelRatio,
   StyleSheet,
   Text,
@@ -13,34 +12,23 @@ import React, {
 } from 'react-native';
 
 import ParallaxScrollView from 'react-native-parallax-scroll-view';
+import ModalSettings from './ModalSettings.js';
 
 class TabSettings extends Component {
   constructor(props) {
     super(props);
-    this.state =  {
-      dataSource: new ListView.DataSource({
-        rowHasChanged: (r1, r2) => r1 !== r2
-      }).cloneWithRows([
-        'Shop Settings',
-        'App Settings'
-      ])
-    };
   }
 
   render() {
     const { onScroll = () => {} } = this.props;
     return (
       <ParallaxScrollView
-          ref="ParallaxView"
           onScroll={onScroll}
-
-          headerBackgroundColor="#333"
           stickyHeaderHeight={ STICKY_HEADER_HEIGHT }
           parallaxHeaderHeight={ PARALLAX_HEADER_HEIGHT }
           backgroundSpeed={10}
-
           renderBackground={() => (
-            <View key="background">
+            <View>
               <Image source={require('./../assets/images/cover.png')}
                      style={{width: window.width,
                              height: PARALLAX_HEADER_HEIGHT}}/>
@@ -53,7 +41,7 @@ class TabSettings extends Component {
           )}
 
           renderForeground={() => (
-            <View key="parallax-header" style={ styles.parallaxHeader }>
+            <View style={ styles.parallaxHeader }>
               <Image style={ [styles.avatar,
                              {width: AVATAR_SIZE, height: AVATAR_SIZE}] }
                      source={require('./../assets/images/ShoppingList.png')} />
@@ -64,26 +52,13 @@ class TabSettings extends Component {
                 get your shortlisting done!
               </Text>
             </View>
-          )}
-
-          renderFixedHeader={() => (
-            <View key="fixed-header" style={styles.fixedSection}>
-              <Text style={styles.fixedSectionText}
-                    onPress={() => this.refs.ParallaxView.scrollTo({ x: 0, y: 0 })}>
-                Scroll to top
-              </Text>
-            </View>
           )}>
-        <ListView
-            style={styles.container}
-            dataSource={ this.state.dataSource }
-            renderRow={(rowData) => (
-              <View key={rowData} style={ styles.row }>
-                <Text style={ styles.rowText }>
-                  { rowData }
-                </Text>
-              </View>
-             )}/>
+          <ModalSettings style={ styles.row } title="Shop Settings">
+            <Text>This is the Shop Settings Modal</Text>
+          </ModalSettings>
+          <ModalSettings style={ styles.row } title="App Settings">
+            <Text>This is the App Settings Modal</Text>
+          </ModalSettings>
     </ParallaxScrollView>
     );
   }
@@ -97,36 +72,6 @@ const PARALLAX_HEADER_HEIGHT = 300;
 const STICKY_HEADER_HEIGHT = 0;
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'black'
-  },
-  background: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    width: window.width,
-    height: PARALLAX_HEADER_HEIGHT
-  },
-  stickySection: {
-    height: STICKY_HEADER_HEIGHT,
-    width: 300,
-    justifyContent: 'flex-end'
-  },
-  stickySectionText: {
-    color: 'white',
-    fontSize: 20,
-    margin: 10
-  },
-  fixedSection: {
-    position: 'absolute',
-    bottom: 10,
-    right: 10
-  },
-  fixedSectionText: {
-    color: '#999',
-    fontSize: 20
-  },
   parallaxHeader: {
     alignItems: 'center',
     flex: 1,
@@ -151,8 +96,7 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     paddingHorizontal: 10,
     height: ROW_HEIGHT,
-    backgroundColor: 'white',
-    borderColor: '#ccc',
+    borderColor: '#000',
     borderBottomWidth: 1,
     justifyContent: 'center'
   },
