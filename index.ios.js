@@ -12,6 +12,7 @@ import React, {
 import ScrollableTabView from 'react-native-scrollable-tab-view';
 import TabBar from './components/TabBar.js';
 import TabSwiper from './components/TabSwiper.js';
+import TabSettings from './components/TabSettings.js';
 
 class ShoppingList extends Component {
   constructor(props) {
@@ -31,7 +32,7 @@ class ShoppingList extends Component {
         <StatusBar hidden={true} />
         <ScrollableTabView style={styles.container} initialPage={1} renderTabBar={() => <TabBar/>} locked={this.state.swipingInProgress}>
           <View tabLabel="shopsettings" style={styles.tabHeader}>
-            <Text>Hello</Text>
+            <TabSettings/>
           </View>
           <View tabLabel="shoppinglist" style={[styles.tabHeader, styles.tabHome]}>
             <TabSwiper style={styles.swiper} onSwiping={this.handleSwiping.bind(this)} />
