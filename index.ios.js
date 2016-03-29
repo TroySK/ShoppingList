@@ -6,13 +6,15 @@ import React, {
   StyleSheet,
   Text,
   View,
-  StatusBar
+  StatusBar,
+  ScrollView
 } from 'react-native';
 
 import ScrollableTabView from 'react-native-scrollable-tab-view';
 import TabBar from './components/TabBar.js';
 import TabSwiper from './components/TabSwiper.js';
 import TabSettings from './components/TabSettings.js';
+import TabList from './components/TabList.js';
 
 class ShoppingList extends Component {
   constructor(props) {
@@ -38,7 +40,9 @@ class ShoppingList extends Component {
             <TabSwiper style={styles.swiper} onSwiping={this.handleSwiping.bind(this)} />
           </View>
           <View tabLabel="thelist" style={styles.tabHeader}>
-            <Text>Kuch</Text>
+            <ScrollView>
+              <TabList />
+            </ScrollView>
           </View>
         </ScrollableTabView>
       </View>
