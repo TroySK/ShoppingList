@@ -10,7 +10,7 @@ let Card = React.createClass({
   render() {
     return (
       <View style={[styles.card, {backgroundColor: this.props.backgroundColor}]}>
-        <Text>{this.props.text}</Text>
+        <Image style={{width:300, height: 300}} source={{uri: 'http://lorempixel.com/400/400/?' + this.props.text}}/>
       </View>
     )
   }
