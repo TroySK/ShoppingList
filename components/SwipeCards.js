@@ -218,9 +218,12 @@ SwipeCards.defaultProps = {
 
 var styles = StyleSheet.create({
   container: {
-    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    marginBottom: 30,
+    position: 'absolute',
+    top: 20,
+    left: 40
   },
   yup: {
     borderColor: 'green',

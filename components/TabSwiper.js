@@ -9,8 +9,8 @@ var lodash = require('lodash');
 let Card = React.createClass({
   render() {
     return (
-      <View style={[styles.card, {backgroundColor: this.props.backgroundColor}]}>
-        <Image style={{width:300, height: 300}} source={{uri: 'http://lorempixel.com/400/400/?' + this.props.text}}/>
+      <View style={[styles.card, {backgroundColor: '#fff'}]}>
+        <Image style={{width:300, height: 400, borderRadius: 4}} source={{uri: 'http://lorempixel.com/300/400/?' + this.props.text}}/>
       </View>
     )
   }
@@ -73,25 +73,29 @@ export default React.createClass({
   render() {
     return (
       <View style={styles.container}>
-        <SwipeCards
-          cards={this.state.cards}
-          renderCard={(cardData) => <Card {...cardData} />}
-          handleYup={this.handleYup}
-          handleNope={this.handleNope}
-          onSwiping={this.handleSwiping}
-          pressedYes={this.state.pressedYes}
-          pressedNo={this.state.pressedNo}
-          onPressed={this.handlePressed}
-        />
-        <View style={styles.buttonGroup}>
-          <View style={styles.button}>
-            <Icon name="close-round" color="#004e66" style={styles.buttonIcon} onPress={this.handleNoPress}>
-            </Icon>
+        <View style={{flex: 1, marginTop: 40}}>
+          <View style={{backgroundColor: '#fff', width: 260, height: 346, alignSelf: 'center', top: 0, left:60, opacity: 0.2, borderRadius: 4, position: 'absolute',     shadowColor: 'rgba(0,0,0,0.4)', shadowOffset: {width:1,height:1}, shadowOpacity: 1}} />
+          <View style={{backgroundColor: '#fff', width: 280, height: 373, alignSelf: 'center', top: 10, left: 50, opacity: 0.4, borderRadius: 4, position: 'absolute', shadowColor: 'rgba(0,0,0,0.4)', shadowOffset: {width:1,height:1}, shadowOpacity: 1}} />
+          <View style={styles.buttonGroup}>
+            <View style={styles.button}>
+              <Icon name="ios-close-outline" color="#e54a08" style={styles.buttonIcon} onPress={this.handleNoPress}>
+              </Icon>
+            </View>
+            <View style={styles.button}>
+              <Icon name="ios-checkmark-outline" color="#4de4bf" style={styles.buttonIcon} onPress={this.handleYesPress}>
+              </Icon>
+            </View>
           </View>
-          <View style={styles.button}>
-            <Icon name="checkmark-round" color="#ff5f2e" style={styles.buttonIcon} onPress={this.handleYesPress}>
-            </Icon>
-          </View>
+          <SwipeCards
+            cards={this.state.cards}
+            renderCard={(cardData) => <Card {...cardData} />}
+            handleYup={this.handleYup}
+            handleNope={this.handleNope}
+            onSwiping={this.handleSwiping}
+            pressedYes={this.state.pressedYes}
+            pressedNo={this.state.pressedNo}
+            onPressed={this.handlePressed}
+          />
         </View>
       </View>
     )
@@ -104,43 +108,29 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     width: 300,
-    height: 300,
-    shadowColor: '#aaa',
-    shadowOffset: {width:1,height:0},
+    height: 400,
+    shadowColor: 'rgba(0,0,0,0.4)',
+    shadowOffset: {width:1,height:1},
     shadowOpacity: 1,
-    borderRadius: 8,
+    borderRadius: 4
   },
   container: {
-    justifyContent: 'space-between',
-    backgroundColor: '#f5f5f5',
+    justifyContent: 'flex-start',
+    backgroundColor: 'rgba(0,0,0,0)',
     marginBottom: 0,
     flexDirection: 'column',
     flex: 1
   },
   buttonGroup: {
     flexDirection: 'row',
-    justifyContent: 'space-around',
-    alignItems: 'center',
-    height: 100
-  },
-  button: {
-    borderRadius: 50,
-    backgroundColor: '#fff',
-    padding: 10,
     justifyContent: 'center',
     alignItems: 'center',
-    // shadowColor: '#aaa',
-    // shadowOffset: {width:1,height:0},
-    // shadowOpacity: 1
-    borderColor: '#ccc',
-    borderWidth: 10,
+    top: 420
+  },
+  button: {
+    padding: 20
   },
   buttonIcon: {
-    fontSize: 48,
-    padding: 0,
-    margin: 0,
-    width: 48,
-    height: 48,
-    textAlign: 'center',
+    fontSize: 72,
   }
 })

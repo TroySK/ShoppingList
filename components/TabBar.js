@@ -25,9 +25,9 @@ var TabBar = React.createClass({
 
     return (
       <TouchableOpacity key={name} onPress={() => this.props.goToPage(page)} style={styles.tab}>
-        <Icon name={name} size={30} color='rgba(0,0,0,1)' style={styles.icon}
+        <Icon name={name} size={30} color='rgba(255,255,255,0.8)' style={styles.icon}
               ref={(icon) => { this.selectedTabIcons[page] = icon }}/>
-        <Icon name={name} size={30} color='rgba(0,0,0,0.5)' style={styles.icon}
+        <Icon name={name} size={30} color='rgba(255,255,255,0.1)' style={styles.icon}
               ref={(icon) => { this.unselectedTabIcons[page] = icon }}/>
       </TouchableOpacity>
     );
@@ -64,7 +64,7 @@ var TabBar = React.createClass({
       position: 'absolute',
       width: containerWidth / numberOfTabs,
       height: 2,
-      backgroundColor: 'rgba(0,0,0,1)',
+      backgroundColor: 'rgba(0,0,0,0.1)',
       bottom: 0,
     };
 
@@ -73,7 +73,7 @@ var TabBar = React.createClass({
     });
 
     return (
-      <View style={{backgroundColor: '#fff'}}>
+      <View style={{backgroundColor: 'rgba(0,0,0,0.1)'}}>
         <View style={[styles.tabs, this.props.style, ]}>
           {this.props.tabs.map((tab, i) => this.renderTabOption(tab, i))}
         </View>
@@ -91,11 +91,9 @@ var styles = StyleSheet.create({
     paddingBottom: 10,
   },
   tabs: {
-    height: 45,
+    height: 65,
     flexDirection: 'row',
-    paddingTop: 5,
-    borderBottomWidth: 2,
-    borderBottomColor: 'rgba(0,0,0,0.1)',
+    paddingTop: 25,
   },
   icon: {
     position: 'absolute',

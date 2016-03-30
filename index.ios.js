@@ -11,6 +11,7 @@ import React, {
 } from 'react-native';
 
 import ScrollableTabView from 'react-native-scrollable-tab-view';
+import LinearGradient from 'react-native-linear-gradient';
 import TabBar from './components/TabBar.js';
 import TabSwiper from './components/TabSwiper.js';
 import TabSettings from './components/TabSettings.js';
@@ -30,13 +31,13 @@ class ShoppingList extends Component {
   }
   render() {
     return (
-      <View style={{flex: 1}}>
-        <StatusBar hidden={true} />
+      <LinearGradient style={{flex: 1}} colors={[ '#055266', '#0b044a']}>
+        <StatusBar barStyle="light-content"/>
         <ScrollableTabView style={styles.container} initialPage={1} renderTabBar={() => <TabBar/>} locked={this.state.swipingInProgress}>
           <View tabLabel="shopsettings" style={styles.tabHeader}>
             <TabSettings/>
           </View>
-          <View tabLabel="shoppinglist" style={[styles.tabHeader, styles.tabHome]}>
+          <View tabLabel="shoppinglist" style={[styles.tabHeader]}>
             <TabSwiper style={styles.swiper} onSwiping={this.handleSwiping.bind(this)} />
           </View>
           <View tabLabel="thelist" style={styles.tabHeader}>
@@ -45,7 +46,7 @@ class ShoppingList extends Component {
             </ScrollView>
           </View>
         </ScrollableTabView>
-      </View>
+      </LinearGradient>
     );
   }
 }
@@ -54,7 +55,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    backgroundColor: '#f5f5f5',
     marginTop: 0
   },
   tabHeader: {
