@@ -1,16 +1,18 @@
 'use strict';
 
-import React, {StyleSheet, Text, View, Image, Animated} from 'react-native';
+import React, {StyleSheet, Text, View, Image, Animated, Dimensions} from 'react-native';
 
 import SwipeCards from './SwipeCards.js';
 import Icon from 'react-native-vector-icons/Ionicons';
 var lodash = require('lodash');
 
+const window = Dimensions.get('window');
+
 let Card = React.createClass({
   render() {
     return (
-      <View style={[styles.card, {backgroundColor: '#fff'}]}>
-        <Image style={{width:300, height: 400, borderRadius: 4}} source={{uri: 'http://lorempixel.com/300/400/?' + this.props.text}}/>
+      <View style={[{backgroundColor: '#fff', flex: 1, borderRadius: 4}]}>
+      <Image resizeMode="cover" style={{ width: window.width * 0.8, height: window.height * 0.6, borderRadius: 4}} source={{uri: 'http://lorempixel.com/300/400/'}}/>
       </View>
     )
   }
@@ -73,19 +75,7 @@ export default React.createClass({
   render() {
     return (
       <View style={styles.container}>
-        <View style={{flex: 1, marginTop: 40}}>
-          <View style={{backgroundColor: '#fff', width: 260, height: 346, alignSelf: 'center', top: 0, left:60, opacity: 0.2, borderRadius: 4, position: 'absolute',     shadowColor: 'rgba(0,0,0,0.4)', shadowOffset: {width:1,height:1}, shadowOpacity: 1}} />
-          <View style={{backgroundColor: '#fff', width: 280, height: 373, alignSelf: 'center', top: 10, left: 50, opacity: 0.4, borderRadius: 4, position: 'absolute', shadowColor: 'rgba(0,0,0,0.4)', shadowOffset: {width:1,height:1}, shadowOpacity: 1}} />
-          <View style={styles.buttonGroup}>
-            <View style={styles.button}>
-              <Icon name="ios-close-outline" color="#e54a08" style={styles.buttonIcon} onPress={this.handleNoPress}>
-              </Icon>
-            </View>
-            <View style={styles.button}>
-              <Icon name="ios-checkmark-outline" color="#4de4bf" style={styles.buttonIcon} onPress={this.handleYesPress}>
-              </Icon>
-            </View>
-          </View>
+        <View style={{flex: 0.8}}>
           <SwipeCards
             cards={this.state.cards}
             renderCard={(cardData) => <Card {...cardData} />}
@@ -97,35 +87,43 @@ export default React.createClass({
             onPressed={this.handlePressed}
           />
         </View>
+        <View style={{flex: 0.2}}>
+          <View style={styles.buttonGroup}>
+            <View style={styles.button}>
+              <Icon name="ios-close-outline" color="#e54a08" style={styles.buttonIcon} onPress={this.handleNoPress}>
+              </Icon>
+            </View>
+            <View style={styles.button}>
+              <Icon name="ios-checkmark-outline" color="#4de4bf" style={styles.buttonIcon} onPress={this.handleYesPress}>
+              </Icon>
+            </View>
+          </View>
+        </View>
       </View>
     )
   }
 })
 
 const styles = StyleSheet.create({
+  container: {
+    backgroundColor: 'rgba(0,0,0,0)',
+    flex: 1,
+    flexDirection: 'column'
+  },
   card: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    width: 300,
-    height: 400,
     shadowColor: 'rgba(0,0,0,0.4)',
     shadowOffset: {width:1,height:1},
     shadowOpacity: 1,
     borderRadius: 4
   },
-  container: {
-    justifyContent: 'flex-start',
-    backgroundColor: 'rgba(0,0,0,0)',
-    marginBottom: 0,
-    flexDirection: 'column',
-    flex: 1
-  },
   buttonGroup: {
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    top: 420
+    bottom: 20
   },
   button: {
     padding: 20

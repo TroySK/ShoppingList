@@ -22,13 +22,10 @@ var TabBar = React.createClass({
 
   renderTabOption(name, page) {
     var isTabActive = this.props.activeTab === page;
-
     return (
       <TouchableOpacity key={name} onPress={() => this.props.goToPage(page)} style={styles.tab}>
-        <Icon name={name} size={30} color='rgba(255,255,255,0.8)' style={styles.icon}
-              ref={(icon) => { this.selectedTabIcons[page] = icon }}/>
-        <Icon name={name} size={30} color='rgba(255,255,255,0.1)' style={styles.icon}
-              ref={(icon) => { this.unselectedTabIcons[page] = icon }}/>
+        <Icon name={name} size={30} color={isTabActive ? 'rgba(255, 255, 255, 0.8)' : 'rgba(255, 255, 255, 0.2)'}
+              ref={(icon) => { this.selectedTabIcons[page] = icon }} style={{alignSelf: (name == 'shopsettings' ? 'flex-start' : (name == 'thelist' ? 'flex-end' : 'center')), paddingLeft: 10, paddingRight: 10}}/>
       </TouchableOpacity>
     );
   },
@@ -94,11 +91,6 @@ var styles = StyleSheet.create({
     height: 65,
     flexDirection: 'row',
     paddingTop: 25,
-  },
-  icon: {
-    position: 'absolute',
-    top: 0,
-    left: 45
   },
 });
 

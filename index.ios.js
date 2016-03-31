@@ -34,13 +34,13 @@ class ShoppingList extends Component {
       <LinearGradient style={{flex: 1}} colors={['#035A69', '#0F325C', '#0D064A']}>
         <StatusBar barStyle="light-content"/>
         <ScrollableTabView style={styles.container} initialPage={1} renderTabBar={() => <TabBar/>} locked={this.state.swipingInProgress}>
-          <View tabLabel="shopsettings" style={styles.tabHeader}>
+          <View tabLabel="shopsettings">
             <TabSettings/>
           </View>
-          <View tabLabel="shoppinglist" style={[styles.tabHeader]}>
+          <View tabLabel="shoppinglist" style={{flex: 1}}>
             <TabSwiper style={styles.swiper} onSwiping={this.handleSwiping.bind(this)} />
           </View>
-          <View tabLabel="thelist" style={styles.tabHeader}>
+          <View tabLabel="thelist">
             <ScrollView>
               <TabList />
             </ScrollView>
@@ -56,9 +56,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     marginTop: 0
-  },
-  tabHeader: {
-    flex: 1
   },
   tabHome: {
 

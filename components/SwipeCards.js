@@ -1,11 +1,13 @@
 'use strict';
 
-import React, { StyleSheet, Text, View, Animated, Component, PanResponder, Image} from 'react-native';
+import React, { StyleSheet, Text, View, Animated, Component, PanResponder, Image, Dimensions} from 'react-native';
 import clamp from 'clamp';
 
 import NoMoreCards from './NoMoreCards.js';
 
 var SWIPE_THRESHOLD = 120;
+
+const window = Dimensions.get('window');
 
 class SwipeCards extends Component {
   constructor(props) {
@@ -166,33 +168,48 @@ class SwipeCards extends Component {
     let animatedNopeStyles = {transform: [{scale: nopeScale}], opacity: nopeOpacity}
 
     return (
-      <View style={styles.container}>
-        { this.state.card
-            ? (
-            <Animated.View style={[styles.card, animatedCardstyles]} {...this._panResponder.panHandlers}>
-              {this.renderCard(this.state.card)}
-            </Animated.View>
-            )
-            : this.renderNoMoreCards() }
+      <View style={{flex: 1}}>
+        <View style={{flex: 0.1}} />
+        <View style={{flex: 0.8, flexDirection: 'row'}}>
+          <View style={{flex: 0.1}} />
+          <View style={{flex: 0.8}}>
+
+            <View style={{backgroundColor: '#fff', opacity: 0.2, borderRadius: 4, shadowColor: 'rgba(0,0,0,0.4)', shadowOffset: {width:1,height:1}, shadowOpacity: 1, flex: 1, justifyContent: 'center', alignSelf: 'center', position: 'absolute', top: 0, left: window.width *0.1, width: window.width * 0.6, height: window.height *0.5 }} />
+
+            <View style={{backgroundColor: '#fff', opacity: 0.2, borderRadius: 4, shadowColor: 'rgba(0,0,0,0.4)', shadowOffset: {width:1,height:1}, shadowOpacity: 1, flex: 1, justifyContent: 'center', alignSelf: 'center', position: 'absolute', top: 10, left: window.width *0.05, width: window.width * 0.7, height: window.height *0.5 }} />
+
+            <View style={styles.container}>
+              { this.state.card
+                  ? (
+                  <Animated.View style={[styles.card, animatedCardstyles]} {...this._panResponder.panHandlers}>
+                    {this.renderCard(this.state.card)}
+                  </Animated.View>
+                  )
+                  : this.renderNoMoreCards() }
 
 
-        { this.props.showNope
-          ? (
-            <Animated.View style={[styles.nope, animatedNopeStyles]}>
-              <Text style={styles.nopeText}>Nevermind!</Text>
-            </Animated.View>
-            )
-          : null
-        }
+              { this.props.showNope
+                ? (
+                  <Animated.View style={[styles.nope, animatedNopeStyles]}>
+                    <Text style={styles.nopeText}>Nevermind!</Text>
+                  </Animated.View>
+                  )
+                : null
+              }
 
-        { this.props.showYup
-          ? (
-            <Animated.View style={[styles.yup, animatedYupStyles]}>
-              <Text style={styles.yupText}>Shortlisted!</Text>
-            </Animated.View>
-          )
-          : null }
+              { this.props.showYup
+                ? (
+                  <Animated.View style={[styles.yup, animatedYupStyles]}>
+                    <Text style={styles.yupText}>Shortlisted!</Text>
+                  </Animated.View>
+                )
+                : null }
+            </View>
 
+          </View>
+          <View style={{flex: 0.1}} />
+        </View>
+        <View style={{flex: 0.1}} />
       </View>
     );
   }
@@ -220,10 +237,11 @@ var styles = StyleSheet.create({
   container: {
     justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: 30,
+    flex: 1,
+    backgroundColor: 'rgba(0,0,0,0)',
     position: 'absolute',
     top: 20,
-    left: 40
+    borderRadius: 4
   },
   yup: {
     borderColor: 'green',
