@@ -64,7 +64,7 @@ var TabBar = React.createClass({
       position: 'absolute',
       width: containerWidth / numberOfTabs,
       height: 2,
-      backgroundColor: 'rgba(0,0,0,0.1)',
+      backgroundColor: 'rgba(0,0,0,0.2)',
       bottom: 0,
     };
 
@@ -73,7 +73,7 @@ var TabBar = React.createClass({
     });
 
     return (
-      <View style={{backgroundColor: 'rgba(0,0,0,0.1)'}}>
+      <View style={{backgroundColor: 'rgba(0,0,0,0.2)'}}>
         <View style={[styles.tabs, this.props.style, ]}>
           {this.props.tabs.map((tab, i) => this.renderTabOption(tab, i))}
         </View>
