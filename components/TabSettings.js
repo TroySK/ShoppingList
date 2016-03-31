@@ -11,7 +11,7 @@ import React, {
   View,
 } from 'react-native';
 
-import ParallaxScrollView from 'react-native-parallax-scroll-view';
+import ParallaxView from 'react-native-parallax-view';
 import ModalSettings from './ModalSettings.js';
 
 class TabSettings extends Component {
@@ -22,44 +22,34 @@ class TabSettings extends Component {
   render() {
     const { onScroll = () => {} } = this.props;
     return (
-      <ParallaxScrollView
-          onScroll={onScroll}
-          stickyHeaderHeight={ STICKY_HEADER_HEIGHT }
-          parallaxHeaderHeight={ PARALLAX_HEADER_HEIGHT }
-          backgroundSpeed={10}
-          renderBackground={() => (
-            <View>
-              <Image source={require('./../assets/images/cover.png')}
-                     style={{width: window.width,
-                             height: PARALLAX_HEADER_HEIGHT}}/>
-              <View style={{position: 'absolute',
-                            top: 0,
-                            width: window.width,
-                            backgroundColor: 'rgba(0,0,0,.4)',
-                            height: PARALLAX_HEADER_HEIGHT}}/>
-            </View>
-          )}
-
-          renderForeground={() => (
-            <View style={ styles.parallaxHeader }>
-              <Image style={ [styles.avatar,
-                             {width: AVATAR_SIZE, height: AVATAR_SIZE}] }
-                     source={require('./../assets/images/ShoppingList.png')} />
-              <Text style={ styles.sectionSpeakerText }>
-                Shopping List
-              </Text>
-              <Text style={ styles.sectionTitleText }>
-                get your shortlisting done!
-              </Text>
-            </View>
-          )}>
-          <ModalSettings style={ styles.row } title="Shop Settings">
-            <Text>This is the Shop Settings Modal</Text>
-          </ModalSettings>
-          <ModalSettings style={ styles.row } title="App Settings">
-            <Text>This is the App Settings Modal</Text>
-          </ModalSettings>
-    </ParallaxScrollView>
+      <ParallaxView
+        backgroundSource={require('./../assets/images/cover.png')}
+        windowHeight={window.width}
+        style={{opacity:0.8, backgroundColor: 'rgba(0,0,0,0)'}}
+        header={(
+          <View style={ styles.parallaxHeader }>
+            <Image style={[styles.avatar,
+                           {width: AVATAR_SIZE, height: AVATAR_SIZE}] }
+                   source={require('./../assets/images/ShoppingList.png')} />
+            <Text style={ styles.sectionSpeakerText }>
+              Shopping List
+            </Text>
+            <Text style={ styles.sectionTitleText }>
+              get your shortlisting done!
+            </Text>
+          </View>
+        )}
+        scrollableViewStyle={{ backgroundColor: 'rgba(0,0,0,0)' }}
+    >
+      <View>
+        <ModalSettings style={ styles.row } title="Shop Settings">
+          <Text>This is the Shop Settings Modal</Text>
+        </ModalSettings>
+        <ModalSettings style={ styles.row } title="App Settings">
+          <Text>This is the App Settings Modal</Text>
+        </ModalSettings>
+      </View>
+    </ParallaxView>
     );
   }
 }
@@ -76,7 +66,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flex: 1,
     flexDirection: 'column',
-    paddingTop: 100
+    paddingTop: 100,
+    backgroundColor: 'rgba(0,0,0,0)'
   },
   avatar: {
     marginBottom: 10,
