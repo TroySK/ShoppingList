@@ -3,6 +3,7 @@
 import React, {StyleSheet, Text, View, Image, Animated, Dimensions} from 'react-native';
 
 import SwipeCards from './SwipeCards.js';
+// import Card from './Card.js';
 import Icon from 'react-native-vector-icons/Ionicons';
 var lodash = require('lodash');
 
