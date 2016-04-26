@@ -11,6 +11,7 @@
     "react-native-flip-card": "^3.2.0",
     "react-native-infinite-scroll-view": "^0.3.3",
     "react-native-linear-gradient": "^1.5.3",
+    "react-native-multi-slider": "^0.2.4",
     "react-native-parallax-view": "^2.0.3",
     "react-native-scrollable-tab-view": "^0.4.0",
     "react-native-tab-navigator": "^0.2.17",
