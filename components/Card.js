@@ -5,55 +5,43 @@ var React = require('react-native');
 var {
   View,
   Easing,
+  Dimensions,
   TouchableOpacity,
   Text,
   Component,
-  Image
+  Image,
+  StyleSheet
   } = React;
 
-var FlipView = require('react-native-flip-view');
+import FlipCard from 'react-native-flip-card'
+import ItemDetails from './ItemDetails.js';
+const window = Dimensions.get('window');
 
 class Card extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { isFlipped: false };
-  }
 
   render = () => {
     return (
-      <FlipView style={{flex: 1}}
-                front={this._renderFront()}
-                back={this._renderBack()}
-                isFlipped={this.state.isFlipped}
-                onFlipped={(val) => {console.log('Flipped: ' + val);}}
-                flipAxis="y"
-                flipEasing={Easing.out(Easing.ease)}
-                flipDuration={500}
-                perspective={1000}/>
+      <FlipCard flip={this.props.flipped}
+        style={{borderWidth: 0}}
+        friction={20}
+        flipHorizontal={false}
+        flipVertical={true}
+        clickable={true}
+        onFlipped={(isFlipped)=>{console.log('isFlipped', isFlipped)}}>
+        <View style={styles.face}>
+          <View style={[{backgroundColor: 'rgba(0,0,0,0)', flex: 1, borderRadius: 4}]}>
+            <Image resizeMode="cover" style={{width: window.width * 0.8, height: window.height *0.6, borderRadius: 4}} source={{uri: 'http://lorempixel.com/300/400/'}}/>
+          </View>
+        </View>
+        <View style={{width: window.width, height: window.height, borderRadius: 4, left: window.width * -0.1, top: window.height * -0.1}}>
+          <ItemDetails />
+        </View>
+      </FlipCard>
     );
-  };
-
-  _renderFront = () => {
-    return (
-      <View style={{flex: 1}}>
-        <Image resizeMode="cover" style={{ width: window.width * 0.8, height: window.height * 0.6, borderRadius: 4}} source={{uri: 'http://lorempixel.com/300/400/'}} onPress={this._flip}/>
-      </View>
-    );
-  };
-
-  _renderBack = () => {
-    return (
-      <View style={{flex: 1, backgroundColor: '#1565C0', justifyContent: 'center', alignItems: 'center'}}>
-      <TouchableOpacity style={{backgroundColor: 'black', padding: 20}} onPress={this._flip}>
-        <Text style={{fontSize: 32, color: 'white'}}>Flip to Front!</Text>
-      </TouchableOpacity>
-      </View>
-    );
-  };
-
-  _flip = () => {
-    this.setState({isFlipped: !this.state.isFlipped});
   };
 }
 
+const styles = StyleSheet.create({
+
+});
 export default Card

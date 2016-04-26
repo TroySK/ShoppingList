@@ -1,25 +1,13 @@
 'use strict';
 
-import React, {StyleSheet, Text, View, Image, Animated, Dimensions} from 'react-native';
+import React, {StyleSheet, Text, View, Image, Animated, Dimensions, TouchableHighlight} from 'react-native';
 
 import SwipeCards from './SwipeCards.js';
-// import Card from './Card.js';
+import Card from './Card.js';
 import Icon from 'react-native-vector-icons/Ionicons';
 var lodash = require('lodash');
 
 const window = Dimensions.get('window');
-
-let Card = React.createClass({
-  render() {
-    return (
-      <View style={[{backgroundColor: '#fff', flex: 1, borderRadius: 4}]}>
-      <Image resizeMode="cover" style={{ width: window.width * 0.8, height: window.height * 0.6, borderRadius: 4}} source={{uri: 'http://lorempixel.com/300/400/'}}/>
-      </View>
-    )
-  }
-})
-
-
 
 const Cards = [
   {text: 'Tomato', backgroundColor: 'red'},
@@ -73,19 +61,26 @@ export default React.createClass({
       });
     }
   },
+  handleCardPress () {
+    this.setState({
+      flipped: this.state.flipped ? false : true
+    })
+  },
   render() {
     return (
       <View style={styles.container}>
         <View style={{flex: 0.8}}>
           <SwipeCards
             cards={this.state.cards}
-            renderCard={(cardData) => <Card {...cardData} />}
+            renderCard={(cardData) => <Card {...cardData} flipped={this.state.flipped}/>}
             handleYup={this.handleYup}
             handleNope={this.handleNope}
             onSwiping={this.handleSwiping}
             pressedYes={this.state.pressedYes}
             pressedNo={this.state.pressedNo}
             onPressed={this.handlePressed}
+            onPress={this.handleCardPress}
+            isFlipped={this.state.flipped}
           />
         </View>
         <View style={{flex: 0.2}}>

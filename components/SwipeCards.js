@@ -95,6 +95,10 @@ class SwipeCards extends Component {
       onPanResponderRelease: (e, {vx, vy}) => {
 
         this.state.pan.flattenOffset();
+        if(Math.abs(this.state.pan.x._value) === 0 && Math.abs(this.state.pan.y._value === 0)){
+          this.props.onPress();
+        }
+
         var velocity;
 
         if (vx >= 0) {
@@ -181,9 +185,18 @@ class SwipeCards extends Component {
             <View style={styles.container}>
               { this.state.card
                   ? (
-                  <Animated.View style={[styles.card, animatedCardstyles]} {...this._panResponder.panHandlers}>
-                    {this.renderCard(this.state.card)}
-                  </Animated.View>
+                    this.props.isFlipped
+                    ? (
+                      <Animated.View style={[styles.card, animatedCardstyles]} >
+                        {this.renderCard(this.state.card)}
+                      </Animated.View>
+                    )
+                    :
+                    (
+                      <Animated.View style={[styles.card, animatedCardstyles]} {...this._panResponder.panHandlers}>
+                      {this.renderCard(this.state.card)}
+                    </Animated.View>
+                    )
                   )
                   : this.renderNoMoreCards() }
 
