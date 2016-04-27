@@ -3,16 +3,11 @@ import React, {
   Text,
   View,
   TouchableOpacity,
-  Animated
+  Animated,
+  Image
 } from 'react-native';
 
-var { createIconSetFromFontello } = require('react-native-vector-icons');
-var fontelloConfig = require('./../assets/fonts/ShoppingListIcons/config.json');
-var Icon = createIconSetFromFontello(fontelloConfig);
-
 var TabBar = React.createClass({
-  selectedTabIcons: [],
-  unselectedTabIcons: [],
 
   propTypes: {
     goToPage: React.PropTypes.func,
@@ -22,36 +17,16 @@ var TabBar = React.createClass({
 
   renderTabOption(name, page) {
     var isTabActive = this.props.activeTab === page;
+    var images = {
+      'shopsettings': require('image!settings'),
+      'shoppinglist': require('image!home'),
+      'thelist': require('image!cart')
+    };
     return (
       <TouchableOpacity key={name} onPress={() => this.props.goToPage(page)} style={styles.tab}>
-        <Icon name={name} size={30} color={isTabActive ? 'rgba(255, 255, 255, 0.8)' : 'rgba(255, 255, 255, 0.2)'}
-              ref={(icon) => { this.selectedTabIcons[page] = icon }} style={{alignSelf: (name == 'shopsettings' ? 'flex-start' : (name == 'thelist' ? 'flex-end' : 'center')), paddingLeft: 10, paddingRight: 10}}/>
+        <Image source={images[name]} style={{alignSelf: (name == 'shopsettings' ? 'flex-start' : (name == 'thelist' ? 'flex-end' : 'center')), marginLeft: 25, marginRight: 25, opacity: (isTabActive ? 1 : 0.5)}} />
       </TouchableOpacity>
     );
-  },
-
-  componentDidMount() {
-    this.setAnimationValue({value: this.props.activeTab});
-    this._listener = this.props.scrollValue.addListener(this.setAnimationValue);
-  },
-
-  setAnimationValue({value}) {
-    var currentPage = this.props.activeTab;
-
-    this.unselectedTabIcons.forEach((icon, i) => {
-      var iconRef = icon;
-
-      if (!icon.setNativeProps && icon !== null) {
-        iconRef = icon.refs.icon_image
-      }
-
-      if (value - i >= 0 && value - i <= 1) {
-        iconRef.setNativeProps({ style: {opacity: value - i} });
-      }
-      if (i - value >= 0 &&  i - value <= 1) {
-        iconRef.setNativeProps({ style: {opacity: i - value} });
-      }
-    });
   },
 
   render() {
@@ -71,7 +46,7 @@ var TabBar = React.createClass({
 
     return (
       <View style={{backgroundColor: 'rgba(0,0,0,0.2)'}}>
-        <View style={[styles.tabs, this.props.style, ]}>
+        <View style={[styles.tabs, this.props.style]}>
           {this.props.tabs.map((tab, i) => this.renderTabOption(tab, i))}
         </View>
         <Animated.View style={[tabUnderlineStyle, {left}]} />
