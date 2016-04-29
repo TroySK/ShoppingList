@@ -75,6 +75,7 @@ class SwipeCards extends Component {
     }
   }
 
+
   componentWillMount() {
     this._panResponder = PanResponder.create({
       onStartShouldSetPanResponder: (evt, gestureState) => true,
@@ -93,10 +94,9 @@ class SwipeCards extends Component {
       ]),
 
       onPanResponderRelease: (e, {vx, vy}) => {
-
         this.state.pan.flattenOffset();
         if(Math.abs(this.state.pan.x._value) === 0 && Math.abs(this.state.pan.y._value === 0)){
-          this.props.onPress();
+          this.props.onCardPress();
         }
 
         var velocity;
@@ -184,19 +184,11 @@ class SwipeCards extends Component {
 
             <View style={styles.container}>
               { this.state.card
-                  ? (
-                    this.props.isFlipped
-                    ? (
-                      <Animated.View style={[styles.card, animatedCardstyles]} >
-                        {this.renderCard(this.state.card)}
-                      </Animated.View>
-                    )
-                    :
-                    (
-                      <Animated.View style={[styles.card, animatedCardstyles]} {...this._panResponder.panHandlers}>
+                  ?
+                  (
+                    <Animated.View style={[styles.card, animatedCardstyles]} {...this._panResponder.panHandlers}>
                       {this.renderCard(this.state.card)}
                     </Animated.View>
-                    )
                   )
                   : this.renderNoMoreCards() }
 

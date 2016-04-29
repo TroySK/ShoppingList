@@ -24,6 +24,7 @@ export default React.createClass({
       cards: Cards,
       pressedYes: false,
       pressedNo: false,
+      flipped: false
     }
   },
   handleYup (card) {
@@ -44,7 +45,8 @@ export default React.createClass({
   handlePressed () {
     this.setState({
       pressedYes: false,
-      pressedNo: false
+      pressedNo: false,
+      flipped: false
     });
   },
   handleYesPress () {
@@ -64,7 +66,9 @@ export default React.createClass({
   handleCardPress () {
     this.setState({
       flipped: this.state.flipped ? false : true
-    })
+    });
+    console.info(this.state.flipped)
+    // this.props.onSwiping(this.state.flipped);
   },
   render() {
     return (
@@ -79,18 +83,18 @@ export default React.createClass({
             pressedYes={this.state.pressedYes}
             pressedNo={this.state.pressedNo}
             onPressed={this.handlePressed}
-            onPress={this.handleCardPress}
+            onCardPress={this.handleCardPress}
             isFlipped={this.state.flipped}
           />
         </View>
         <View style={{flex: 0.2}}>
           <View style={styles.buttonGroup}>
             <View style={styles.button}>
-              <Icon name="ios-close-outline" color="#e54a08" style={styles.buttonIcon} onPress={this.handleNoPress}>
+              <Icon name="ios-close-outline" color="rgba(229, 74, 9, 1)" style={styles.buttonIcon} onPress={this.handleNoPress}>
               </Icon>
             </View>
             <View style={styles.button}>
-              <Icon name="ios-checkmark-outline" color="#4de4bf" style={styles.buttonIcon} onPress={this.handleYesPress}>
+              <Icon name="ios-checkmark-outline" color="rgba(80, 227, 194, 1)" style={styles.buttonIcon} onPress={this.handleYesPress}>
               </Icon>
             </View>
           </View>

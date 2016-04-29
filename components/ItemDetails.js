@@ -1,6 +1,3 @@
-/*
- * This example demonstrates how to use ParallaxScrollView within a ScrollView component.
- */
 import React, {
   Component,
   Dimensions,
@@ -9,10 +6,12 @@ import React, {
   StyleSheet,
   Text,
   View,
+  ScrollView
 } from 'react-native';
 
 import ParallaxView from 'react-native-parallax-view';
 import ModalSettings from './ModalSettings.js';
+import LinearGradient from 'react-native-linear-gradient';
 
 class ItemDetails extends Component {
   constructor(props) {
@@ -20,46 +19,30 @@ class ItemDetails extends Component {
   }
 
   render() {
-    const { onScroll = () => {} } = this.props;
+    const { onScroll = () => { } } = this.props;
     return (
       <ParallaxView
-        backgroundSource={{uri: 'http://lorempixel.com/400/400/'}}
-        style={{backgroundColor: 'rgba(0,0,0,1)', borderRadius: 4}}
-        header={(
-          <View style={ styles.parallaxHeader }>
-            <Image style={[styles.avatar,
-                           {width: AVATAR_SIZE, height: AVATAR_SIZE}] }
-                   source={require('./../assets/images/ShoppingList.png')} />
-            <Text style={ styles.sectionSpeakerText }>
-              Shopping List
-            </Text>
-            <Text style={ styles.sectionTitleText }>
-              get your shortlisting done!
-            </Text>
-          </View>
-        )}
-        scrollableViewStyle={{ backgroundColor: 'rgba(0,0,0,0)' }}
+        backgroundSource={{uri: 'http://lorempixel.com/300/300/'}}
+        style={{backgroundColor: 'rgba(255, 255, 255,1)'}}
+        scrollableViewStyle={{ backgroundColor: 'rgba(240, 240, 240,1)' }}
     >
-      <View>
-        <Text>Hello</Text>
-        <Text>Hello</Text>
-        <Text>Hello</Text>
-        <Text>Hello</Text>
-        <Text>Hello</Text>
-        <Text>Hello</Text>
-        <Text>Hello</Text>
-        <Text>Hello</Text>
-        <Text>Hello</Text>
-        <Text>Hello</Text>
-        <Text>Hello</Text>
-        <Text>Hello</Text>
-        <Text>Hello</Text>
-        <Text>Hello</Text>
-        <Text>Hello</Text>
-        <Text>Hello</Text>
-        <Text>Hello</Text>
-        <Text>Hello</Text>
+      <View style={{margin: 24, width: window.width, height: (window.height - window.width)}}>
+        <Text style={{color: 'rgba(45, 45, 45, 1)', fontSize: 18, fontWeight: 'bold'}}>Apple iPhone 6S</Text>
+        <Text style={{color: 'rgba(45, 45, 45, 1)', marginTop: 10, fontSize: 14, fontWeight: 'normal'}}>(Silver, 128 GB)</Text>
+        <View>
+          <Text style={{color: 'rgba(183, 183, 183, 1)', marginTop: 10, fontSize: 16}}>OS 9</Text>
+          <Text style={{color: 'rgba(183, 183, 183, 1)', fontSize: 16}}>4.7 inch Touchscreen</Text>
+          <Text style={{color: 'rgba(183, 183, 183, 1)', fontSize: 16}}>12 MP Primary Camera</Text>
+          <Text style={{color: 'rgba(183, 183, 183, 1)', fontSize: 16}}>3D Touch & Live Photos</Text>
+          <Text style={{color: 'rgba(183, 183, 183, 1)', fontSize: 16}}>4.7 inch Touchscreen</Text>
+          <Text style={{color: 'rgba(183, 183, 183, 1)', fontSize: 16}}>12 MP Primary Camera</Text>
+          <Text style={{color: 'rgba(183, 183, 183, 1)', fontSize: 16}}>3D Touch & Live Photos</Text>
+          <Text style={{color: 'rgba(183, 183, 183, 1)', fontSize: 16}}>Warranty</Text>
+          <Text style={{width: (window.width - 48), color: 'rgba(183, 183, 183, 1)', fontSize: 16}}>1 year manufacturer warranty for Phone and 6 months warranty for in the box accessories</Text>
+          <Text style={{color: 'rgba(0, 203, 255, 1)', marginTop: 10, fontSize: 14, fontWeight: 'bold', fontSize: 16}}>Rs. 64,990</Text>
+        </View>
       </View>
+      <LinearGradient style={{width: window.width, height: window.width + 200, position:'absolute', top: 0, left: 0}} colors={['rgba(255,255,255,0)','rgba(255,255,255,0.5)', 'rgba(255,255,255,1)']}></LinearGradient>
     </ParallaxView>
     );
   }
