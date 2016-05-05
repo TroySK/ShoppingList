@@ -22,7 +22,7 @@ class TabSettings extends Component {
   render() {
     const { onScroll = () => {} } = this.props;
     return (
-      <ScrollView style={{margin: 10}}>
+      <View style={{margin: 10}}>
         <View style={{flexDirection: 'row', padding: 5}}>
           <Text style={{flex:1, backgroundColor: 'rgba(0,0,0,0)', paddingLeft: 5, color: 'rgba(255, 255, 255, 1)', fontWeight: '700'}}>Stores</Text>
           <Text style={{flex:1, backgroundColor: 'rgba(0,0,0,0)', textAlign: 'right', paddingRight: 5, color: 'rgba(255, 255, 255, 0.4)'}}>FlipKart</Text>
@@ -81,7 +81,7 @@ class TabSettings extends Component {
         <View style={{backgroundColor: 'rgba(0,0,0,0)', margin: 5}}>
           <Text style={{fontSize: 10, color: 'rgba(255,255,255,0.2)'}}>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</Text>
         </View>
-      </ScrollView>
+      </View>
     );
   }
 }

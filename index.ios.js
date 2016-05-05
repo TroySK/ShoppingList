@@ -34,17 +34,15 @@ class ShoppingList extends Component {
       <LinearGradient style={{flex: 1}} colors={['#035A69', '#0F325C', '#0D064A']}>
         <StatusBar barStyle="light-content"/>
         <ScrollableTabView style={styles.container} initialPage={1} renderTabBar={() => <TabBar/>} locked={true}>
-          <View tabLabel="shopsettings">
+          <ScrollView tabLabel="shopsettings">
             <TabSettings/>
-          </View>
+          </ScrollView>
           <View tabLabel="shoppinglist" style={{flex: 1}}>
             <TabSwiper style={styles.swiper} onSwiping={this.handleSwiping.bind(this)} />
           </View>
-          <View tabLabel="thelist">
-            <ScrollView>
-              <TabList />
-            </ScrollView>
-          </View>
+          <ScrollView tabLabel="thelist">
+            <TabList />
+          </ScrollView>
         </ScrollableTabView>
       </LinearGradient>
     );
