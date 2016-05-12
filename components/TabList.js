@@ -7,6 +7,7 @@ var {
   Text,
   Image
 } = React;
+import Card from './Card.js';
 
 var data = [
     {
@@ -93,7 +94,8 @@ class TabList extends React.Component {
         rowHasChanged: (r1, r2) => r1 !== r2,
       }),
       canLoadMoreContent: true,
-      isLoadingContent: true
+      isLoadingContent: true,
+      cardFlipped: false
     };
   }
 
@@ -118,10 +120,7 @@ class TabList extends React.Component {
   }
 
   _renderRow(row) {
-    return <Image
-        style={{width: 400, height: 400}}
-        source={{uri: row.profile_picture.href + "?" + Math.random()}}
-      />
+    return <Card flipped={this.state.cardFlipped} style={{margin: 10}} full={true} />
   }
 
 }
@@ -129,7 +128,7 @@ class TabList extends React.Component {
 let styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F5FCFF',
+    backgroundColor: 'rgba(0,0,0,0)'
   },
   button: {
     padding: 20,

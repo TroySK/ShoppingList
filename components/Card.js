@@ -10,7 +10,8 @@ var {
   Component,
   Image,
   StyleSheet,
-  Modal
+  Modal,
+  TouchableOpacity
   } = React;
 
 import ItemDetails from './ItemDetails.js';
@@ -21,35 +22,42 @@ class Card extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      modalVisible: false,
+      modalVisible: this.props.flipped,
     };
   }
 
   _setModalVisible(visible) {
-    this.setState({modalVisible: true});
-    console.info('modal = ' + this.state.modalVisible)
+    this.setState({modalVisible: visible});
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this._setModalVisible(nextProps.flipped);
   }
 
   render = () => {
     return (
-      <View style={styles.face}>
-        <View style={[{backgroundColor: 'rgba(0,0,0,0)', flex: 1}]}>
-          <Image resizeMode="cover" style={{width: window.width * 0.8, height: window.width * 0.8, borderRadius: 4}} source={{uri: 'http://lorempixel.com/300/300/'}}/>
-          <View style={{width: window.width * 0.8, height: ((window.height * 0.6) - (window.width * 0.8)), borderBottomLeftRadius: 4, borderBottomRightRadius: 4, backgroundColor: 'rgba(240,240,240, 1)', paddingLeft: 22}}>
-            <Text style={{color: 'rgba(45, 45, 45, 1)', marginTop: 12, fontSize: 18, fontWeight: 'bold'}}>Apple iPhone 6S</Text>
-            <Text style={{color: 'rgba(45, 45, 45, 1)', marginTop: 3, fontSize: 14, fontWeight: 'normal'}}>(Silver, 128 GB)</Text>
-            <Text style={{color: 'rgba(0, 203, 255, 1)', marginTop: 3, fontSize: 14, fontWeight: 'bold', bottom: 12, position: 'absolute'}}>Rs. 64,990</Text>
+      <TouchableOpacity onPress={() => this._setModalVisible(!this.state.modalVisible) }>
+        <View>
+          <View style={[this.props.style, {alignSelf: 'center'}]}>
+            <View style={[{backgroundColor: 'rgba(0,0,0,0)', flex: 1}]}>
+              <Image resizeMode="cover" style={{width: window.width * (this.props.full ? 0.98 : 0.8), height: window.width * (this.props.full ? 0.98 : 0.8), borderRadius: 4}} source={{uri: 'http://lorempixel.com/300/300/'}}/>
+              <View style={{width: window.width * (this.props.full ? 0.98 : 0.8), height: ((window.height * 0.6) - (window.width * 0.8)), borderBottomLeftRadius: 4, borderBottomRightRadius: 4, backgroundColor: 'rgba(240,240,240, 1)', paddingLeft: 22}}>
+                <Text style={{color: 'rgba(45, 45, 45, 1)', marginTop: 12, fontSize: 18, fontWeight: 'bold'}}>Apple iPhone 6S</Text>
+                <Text style={{color: 'rgba(45, 45, 45, 1)', marginTop: 3, fontSize: 14, fontWeight: 'normal'}}>(Silver, 128 GB)</Text>
+                <Text style={{color: 'rgba(0, 203, 255, 1)', marginTop: 3, fontSize: 14, fontWeight: 'bold', bottom: 12, position: 'absolute'}}>Rs. 64,990</Text>
+              </View>
+            </View>
           </View>
+          <Modal
+            animated={true}
+            transparent={false}
+            visible={this.state.modalVisible}
+            onRequestClose={() => {this._setModalVisible(false)}}
+            >
+            <ItemDetails></ItemDetails>
+          </Modal>
         </View>
-        <Modal
-          animated={true}
-          transparent={false}
-          visible={this.props.flipped}
-          onRequestClose={() => {this._setModalVisible(false)}}
-          >
-          <ItemDetails></ItemDetails>
-        </Modal>
-      </View>
+      </TouchableOpacity>
     );
   };
 }
