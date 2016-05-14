@@ -39,8 +39,8 @@ class Card extends Component {
       <TouchableOpacity onPress={() => this._setModalVisible(!this.state.modalVisible) }>
         <View>
           <View style={[this.props.style, {alignSelf: 'center'}]}>
-            <View style={[{backgroundColor: 'rgba(0,0,0,0)', flex: 1}]}>
-              <Image resizeMode="cover" style={{width: window.width * (this.props.full ? 0.98 : 0.8), height: window.width * (this.props.full ? 0.98 : 0.8), borderRadius: 4}} source={{uri: 'http://lorempixel.com/300/300/'}}/>
+            <View style={[{backgroundColor: 'rgba(0,0,0,0)'}]}>
+              <Image resizeMode="cover" style={{width: window.width * (this.props.full ? 0.98 : 0.8), height: window.width * (this.props.full ? 0.98 : 0.8), /* borderTopLeftRadius: 4, borderTopRightRadius: 4 */ }} source={{uri: 'http://lorempixel.com/300/300/'}}/>
               <View style={{width: window.width * (this.props.full ? 0.98 : 0.8), height: ((window.height * 0.6) - (window.width * 0.8)), borderBottomLeftRadius: 4, borderBottomRightRadius: 4, backgroundColor: 'rgba(240,240,240, 1)', paddingLeft: 22}}>
                 <Text style={{color: 'rgba(45, 45, 45, 1)', marginTop: 12, fontSize: 18, fontWeight: 'bold'}}>Apple iPhone 6S</Text>
                 <Text style={{color: 'rgba(45, 45, 45, 1)', marginTop: 3, fontSize: 14, fontWeight: 'normal'}}>(Silver, 128 GB)</Text>
