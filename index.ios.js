@@ -35,7 +35,7 @@ class ShoppingList extends Component {
         <StatusBar barStyle="light-content"/>
         <ScrollableTabView style={styles.container} initialPage={1} renderTabBar={() => <TabBar/>} locked={this.state.swipingInProgress}>
           <ScrollView tabLabel="shopsettings">
-            <TabSettings/>
+            <TabSettings onMultiSliderPress={this.handleSwiping.bind(this)}/>
           </ScrollView>
           <View tabLabel="shoppinglist" style={{flex: 1}}>
             <TabSwiper style={styles.swiper} onSwiping={this.handleSwiping.bind(this)} />

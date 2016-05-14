@@ -10,13 +10,16 @@ import React, {
   Switch
 } from 'react-native';
 
-import ModalSettings from './ModalSettings.js';
 import MultiSlider from 'react-native-multi-slider';
 
 
 class TabSettings extends Component {
   constructor(props) {
     super(props);
+  }
+
+  handlePress (pressed) {
+    this.props.onMultiSliderPress(pressed);
   }
 
   render() {
@@ -75,7 +78,7 @@ class TabSettings extends Component {
         </View>
         <View style={{backgroundColor: 'rgba(255, 255, 255, 1)', padding: 0, margin: 5, borderRadius: 4, shadowColor: 'rgba(0,0,0,0.4)', shadowOffset: {width:1,height:1}, shadowOpacity: 1}}>
           <View style={{flex:1, flexDirection: 'row', padding: 5, justifyContent: 'center'}}>
-          <MultiSlider values={[3,7]} sliderLength={280} selectedStyle={{backgroundColor: '#4de4bf'}} unselectedStyle={{backgroundColor: 'rgba(182, 182, 182, 1)'}}             trackStyle={{ height:1, borderRadius: 2}} markerStyle={{height: 28, width: 28, borderRadius: 50, backgroundColor: 'rgba(255, 255, 255, 1)', borderWidth: 0.5, borderColor: 'rgba(0,0,0,0.1)', shadowColor: 'rgba(0,0,0,0.05)', shadowOffset: {height: 3, width: 3}, shadowRadius: 3}}/>
+          <MultiSlider values={[3,7]} sliderLength={280} selectedStyle={{backgroundColor: '#4de4bf'}} unselectedStyle={{backgroundColor: 'rgba(182, 182, 182, 1)'}}             trackStyle={{ height:1, borderRadius: 2}} markerStyle={{height: 28, width: 28, borderRadius: 50, backgroundColor: 'rgba(255, 255, 255, 1)', borderWidth: 0.5, borderColor: 'rgba(0,0,0,0.1)', shadowColor: 'rgba(0,0,0,0.05)', shadowOffset: {height: 3, width: 3}, shadowRadius: 3}} onValuesChangeStart={this.handlePress.bind(this, true)} onValuesChangeFinish={this.handlePress.bind(this, false)}/>
           </View>
         </View>
         <View style={{backgroundColor: 'rgba(0,0,0,0)', margin: 5}}>
