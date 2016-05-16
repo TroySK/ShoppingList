@@ -7,7 +7,8 @@ import React, {
   Text,
   View,
   StatusBar,
-  ScrollView
+  ScrollView,
+  AsyncStorage
 } from 'react-native';
 
 import ScrollableTabView from 'react-native-scrollable-tab-view';
@@ -23,6 +24,16 @@ class ShoppingList extends Component {
     this.state = {
       swipingInProgress: false,
     };
+    AsyncStorage.setItem('app_name', 'Shopping List');
+    AsyncStorage.setItem('stores', JSON.stringify([
+      { "FlipKart" : true },
+      { "Amazon" : false }
+    ]));
+    AsyncStorage.setItem('categories', JSON.stringify([
+      { "Electronics" : true },
+      { "Fashion" : false },
+      { "Furniture" : true }
+    ]));
   }
   handleSwiping(status) {
     this.setState({

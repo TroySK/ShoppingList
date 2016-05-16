@@ -67,8 +67,6 @@ export default React.createClass({
     this.setState({
       flipped: this.state.flipped ? false : true
     });
-    console.info(this.state.flipped)
-    // this.props.onSwiping(this.state.flipped);
   },
   render() {
     return (
