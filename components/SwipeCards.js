@@ -224,7 +224,7 @@ class SwipeCards extends Component {
                 ? (
                   <Animated.View style={[styles.nope, animatedNopeStyles]}>
                     <Text style={styles.nopeText}>
-                      Nevermind  <Icon name="close" color="rgba(255, 255, 255, 1)" size={16} />
+                      Nevermind;   <Icon name="ios-close" color="rgba(255, 255, 255, 1)" size={24} />
                     </Text>
                   </Animated.View>
                   )
@@ -235,7 +235,7 @@ class SwipeCards extends Component {
                 ? (
                   <Animated.View style={[styles.yup, animatedYupStyles]}>
                     <Text style={styles.yupText}>
-                      Shortlisted  <Icon name="checkmark" color="rgba(255, 255, 255, 1)" size={16} />
+                      Shortlisted!   <Icon name="ios-checkmark" color="rgba(255, 255, 255, 1)" size={24} />
                     </Text>
                   </Animated.View>
                 )
@@ -282,7 +282,7 @@ var styles = StyleSheet.create({
     backgroundColor: 'rgba(80, 227, 194, 1)',
     borderRadius: 15,
     padding: 8,
-    bottom: -160,
+    bottom: -window.height/4,
     position: 'absolute',
     left: window.width/2 - 100
   },
@@ -295,7 +295,7 @@ var styles = StyleSheet.create({
     backgroundColor: 'rgba(229, 74, 9, 1)',
     borderRadius: 15,
     padding: 8,
-    bottom: -160,
+    bottom: -window.height/4,
     position: 'absolute',
     left: window.width/2 - 100
   },
