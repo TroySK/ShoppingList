@@ -71,7 +71,7 @@ export default React.createClass({
   render() {
     return (
       <View style={styles.container}>
-        <View style={{flex: 0.8}}>
+        <View style={{flex: 1}}>
           <SwipeCards
             cards={this.state.cards}
             renderCard={(cardData) => <Card {...cardData} flipped={this.state.flipped}/>}
@@ -85,7 +85,7 @@ export default React.createClass({
             isFlipped={this.state.flipped}
           />
         </View>
-        <View style={{flex: 0.2}}>
+        <View style={{flex: 0, position: 'absolute', bottom:0, left: window.width/2 - 96}}>
           <View style={styles.buttonGroup}>
             <View style={styles.button}>
               <Icon name="ios-close-outline" color="rgba(229, 74, 9, 1)" style={styles.buttonIcon} onPress={this.handleNoPress}>
@@ -97,6 +97,7 @@ export default React.createClass({
             </View>
           </View>
         </View>
+
       </View>
     )
   }
@@ -121,7 +122,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    bottom: 20
+    bottom: 0
   },
   button: {
     padding: 20

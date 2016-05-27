@@ -182,69 +182,60 @@ class SwipeCards extends Component {
 
     return (
       <View style={{flex: 1}}>
-        <View style={{flex: 0.1}} />
-        <View style={{flex: 0.8, flexDirection: 'row'}}>
-          <View style={{flex: 0.1}} />
-          <View style={{flex: 0.8}}>
-
-            <View style={{backgroundColor: '#fff', opacity: 0.2, borderRadius: 4, shadowColor: 'rgba(0,0,0,0.4)', shadowOffset: {width:1,height:1}, shadowOpacity: 1, flex: 1, justifyContent: 'center', alignSelf: 'center', position: 'absolute', top: 80, left: window.width *0.1, width: window.width * 0.6, height: window.height *0.5 }}>
-              <View style={[{backgroundColor: 'rgba(0,0,0,0)', flex: 1}]}>
-                <Image resizeMode="cover" style={{flex:2.5, borderRadius: 4 }} source={{uri: 'http://lorempixel.com/300/300/'}}/>
-                <View style={{flex: 1, borderBottomLeftRadius: 4, borderBottomRightRadius: 4, backgroundColor: 'rgba(240,240,240, 1)', paddingLeft: 22, top: -3}}>
-                  <View style={{width: window.width * 0.48, height: 16, backgroundColor: 'rgba(110,110,110, 0.2)', top: 15}}></View>
-                  <View style={{width: window.width * 0.38, height: 16, backgroundColor: 'rgba(110,110,110, 0.2)', top: 25}}></View>
-                  <View style={{width: 60, height: 16, backgroundColor: 'rgba(110,110,110, 0.2)', top: 35}}></View>
-                </View>
+        <View style={{flex: 1}}>
+          <View style={{backgroundColor: '#fff', opacity: 0.2, borderRadius: 4, shadowColor: 'rgba(0,0,0,0.4)', shadowOffset: {width:1,height:1}, shadowOpacity: 1, flex: 1, justifyContent: 'center', alignSelf: 'center', position: 'absolute', top: window.width * 0.29, left: window.width * 0.2, width: window.width * 0.6, height: window.height *0.5 }}>
+            <View style={[{backgroundColor: 'rgba(0,0,0,0)', flex: 1}]}>
+              <Image resizeMode="cover" style={{flex:2.5, borderRadius: 4 }} source={{uri: 'http://lorempixel.com/300/300/'}}/>
+              <View style={{flex: 1, borderBottomLeftRadius: 4, borderBottomRightRadius: 4, backgroundColor: 'rgba(240,240,240, 1)', paddingLeft: 22, top: -3}}>
+                <View style={{width: window.width * 0.48, height: 16, backgroundColor: 'rgba(110,110,110, 0.2)', top: 15}}></View>
+                <View style={{width: window.width * 0.38, height: 16, backgroundColor: 'rgba(110,110,110, 0.2)', top: 25}}></View>
+                <View style={{width: 60, height: 16, backgroundColor: 'rgba(110,110,110, 0.2)', top: 35}}></View>
               </View>
-            </View>
-
-            <View style={{backgroundColor: '#fff', opacity: 0.4, borderRadius: 4, shadowColor: 'rgba(0,0,0,0.4)', shadowOffset: {width:1,height:1}, shadowOpacity: 1, flex: 1, justifyContent: 'center', alignSelf: 'center', position: 'absolute', top: 62, left: window.width * 0.05, width: window.width * 0.7, height: window.height * 0.5 }}>
-              <View style={[{backgroundColor: 'rgba(0,0,0,0)', flex: 1}]}>
-                <Image resizeMode="cover" style={{flex:2.5, borderRadius: 4 }} source={{uri: 'http://lorempixel.com/300/300/'}}/>
-                <View style={{flex: 1, borderBottomLeftRadius: 4, borderBottomRightRadius: 4, backgroundColor: 'rgba(240,240,240, 1)', paddingLeft: 22, top: -3}}>
-                  <Text>{this.state.nextImage.text}</Text>
-                  <View style={{width: window.width * 0.58, height: 20, backgroundColor: 'rgba(110,110,110, 0.2)', top: 10}}></View>
-                  <View style={{width: window.width * 0.48, height: 20, backgroundColor: 'rgba(110,110,110, 0.2)', top: 20}}></View>
-                  <View style={{width: 80, height: 20, backgroundColor: 'rgba(110,110,110, 0.2)', top: 30}}></View>
-                </View>
-              </View>
-            </View>
-            <View style={styles.container}>
-              { this.state.card
-                  ?
-                  (
-                    <Animated.View style={[styles.card, animatedCardstyles]} {...this._panResponder.panHandlers}>
-                      {this.renderCard(this.state.card)}
-                    </Animated.View>
-                  )
-                  : this.renderNoMoreCards() }
-
-
-              { this.props.showNope
-                ? (
-                  <Animated.View style={[styles.nope, animatedNopeStyles]}>
-                    <Text style={styles.nopeText}>
-                      Nevermind;   <Icon name="ios-close" color="rgba(255, 255, 255, 1)" size={24} />
-                    </Text>
-                  </Animated.View>
-                  )
-                : null
-              }
-
-              { this.props.showYup
-                ? (
-                  <Animated.View style={[styles.yup, animatedYupStyles]}>
-                    <Text style={styles.yupText}>
-                      Shortlisted!   <Icon name="ios-checkmark" color="rgba(255, 255, 255, 1)" size={24} />
-                    </Text>
-                  </Animated.View>
-                )
-                : null }
             </View>
           </View>
-          <View style={{flex: 0.1}} />
+          <View style={{backgroundColor: '#fff', opacity: 0.4, borderRadius: 4, shadowColor: 'rgba(0,0,0,0.4)', shadowOffset: {width:1,height:1}, shadowOpacity: 1, flex: 1, justifyContent: 'center', alignSelf: 'center', position: 'absolute', top: window.width * 0.25, left: window.width * 0.15, width: window.width * 0.7, height: window.height * 0.5 }}>
+            <View style={[{backgroundColor: 'rgba(0,0,0,0)', flex: 1}]}>
+              <Image resizeMode="cover" style={{flex:2.5, borderRadius: 4 }} source={{uri: 'http://lorempixel.com/300/300/'}}/>
+              <View style={{flex: 1, borderBottomLeftRadius: 4, borderBottomRightRadius: 4, backgroundColor: 'rgba(240,240,240, 1)', paddingLeft: 22, top: -3}}>
+                <Text>{this.state.nextImage.text}</Text>
+                <View style={{width: window.width * 0.58, height: 20, backgroundColor: 'rgba(110,110,110, 0.2)', top: 10}}></View>
+                <View style={{width: window.width * 0.48, height: 20, backgroundColor: 'rgba(110,110,110, 0.2)', top: 20}}></View>
+                <View style={{width: 80, height: 20, backgroundColor: 'rgba(110,110,110, 0.2)', top: 30}}></View>
+              </View>
+            </View>
+          </View>
+          <View style={styles.container}>
+            { this.state.card
+                ?
+                (
+                  <Animated.View style={[styles.card, animatedCardstyles]} {...this._panResponder.panHandlers}>
+                    {this.renderCard(this.state.card)}
+                  </Animated.View>
+                )
+                : this.renderNoMoreCards() }
+
+            { this.props.showNope
+              ? (
+                <Animated.View style={[styles.nope, animatedNopeStyles]}>
+                  <Text style={styles.nopeText}>
+                    Nevermind;   <Icon name="ios-close" color="rgba(255, 255, 255, 1)" size={24} />
+                  </Text>
+                </Animated.View>
+                )
+              : null
+            }
+
+            { this.props.showYup
+              ? (
+                <Animated.View style={[styles.yup, animatedYupStyles]}>
+                  <Text style={styles.yupText}>
+                    Shortlisted!   <Icon name="ios-checkmark" color="rgba(255, 255, 255, 1)" size={24} />
+                  </Text>
+                </Animated.View>
+              )
+              : null }
+          </View>
         </View>
-        <View style={{flex: 0.1}} />
       </View>
     );
   }
@@ -270,21 +261,19 @@ SwipeCards.defaultProps = {
 
 var styles = StyleSheet.create({
   container: {
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     alignItems: 'center',
     flex: 1,
     backgroundColor: 'rgba(0,0,0,0)',
-    position: 'absolute',
-    top: -20,
-    borderRadius: 4
+    borderRadius: 4,
+    padding: 20
   },
   yup: {
     backgroundColor: 'rgba(80, 227, 194, 1)',
     borderRadius: 15,
     padding: 8,
-    bottom: -window.height/4,
     position: 'absolute',
-    left: window.width/2 - 100
+    left: window.width/2 - 64
   },
   yupText: {
     fontSize: 16,
@@ -295,9 +284,8 @@ var styles = StyleSheet.create({
     backgroundColor: 'rgba(229, 74, 9, 1)',
     borderRadius: 15,
     padding: 8,
-    bottom: -window.height/4,
     position: 'absolute',
-    left: window.width/2 - 100
+    left: window.width/2 - 64
   },
   nopeText: {
     fontSize: 16,
