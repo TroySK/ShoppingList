@@ -43,7 +43,7 @@ class ShoppingListMain extends Component {
   render() {
     return (
       <LinearGradient style={{flex: 1}} colors={['#035A69', '#0F325C', '#0D064A']}>
-        <StatusBar barStyle="light-content"/>
+        <StatusBar barStyle="light-content" translucent={true}/>
         <ScrollableTabView style={styles.container} initialPage={1} renderTabBar={() => <TabBar/>} locked={this.state.swipingInProgress}>
           <ScrollView tabLabel="shopsettings">
             <TabSettings onMultiSliderPress={this.handleSwiping.bind(this)}/>

@@ -18,9 +18,9 @@ var TabBar = React.createClass({
   renderTabOption(name, page) {
     var isTabActive = this.props.activeTab === page;
     var images = {
-      'shopsettings': require('image!settings'),
-      'shoppinglist': require('image!home'),
-      'thelist': require('image!cart')
+      'shopsettings': require('./../assets/icons/settings.png'),
+      'shoppinglist': require('./../assets/icons/home.png'),
+      'thelist': require('./../assets/icons/cart.png'),
     };
     return (
       <TouchableOpacity key={name} onPress={() => this.props.goToPage(page)} style={styles.tab}>
